@@ -1,0 +1,37 @@
+:root {
+    --primary: #8046df;
+    --secondary: #2d2a4e;
+    --tertiary: rgb(196, 192, 253);
+    --grey: rgb(175, 174, 174);
+    font-size: 62.5%;
+  }
+  
+body {
+    background: var(--tertiary);
+    text-align: center;
+    padding: 30px 25px;
+    /* border-bottom: 5px solid var(--secondary); */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;  
+}
+
+body h1{
+    font-size: 3.5rem;
+}
+
+  header {
+    background: var(--primary);
+    text-align: center;
+    padding: 30px 25px;
+    border-bottom: 5px solid var(--secondary);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+header h1{
+    font-size: 5rem;
+}
+header p {
+    color: var(--grey);
+    margin: 5px 0 20px;
+    font-size: 2rem;
+  }
+
