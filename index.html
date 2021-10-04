@@ -13,24 +13,28 @@
         <h1> Welcome to CodeQuiz</h1>
         <p>Try to answer the following code-related questions within the time limit.</p>
         <p>Keep in mind that incorrect answers with penalize your score/time by ten seconds</p>
-        <button>Start Quiz</button>
-        <button>High Scores</button>
+        <button id="startBtn">Start Quiz</button>
+        <button id="scoreBtn">High Scores</button>
     </header>
 
     <!-- Section to Display the Question -->
-    <div>
+    <div id="questionBox">
         <div>
-            <h1>Question</h1>
+            <h1 id="question"></h1>
         </div>
 
         <div>
-            <button>A1</button>
-            <button>A2</button>
+            <button id="A1" class = "btn"></button>
+            <button id="A2" class = "btn"></button>
         </div>
 
         <div>
-            <button>A3</button>
-            <button>A4</button>
+            <button id="A3" class = "btn"></button>
+            <button id="A4" class = "btn"></button>
+        </div>
+
+        <div> 
+            <p id="timer" class="timer"></p>
         </div>
     </div>
     

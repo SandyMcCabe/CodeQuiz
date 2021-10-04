@@ -38,3 +38,53 @@ const questions = [
 const highScores = [
     //initials, score
 ]
+
+//set the time for 2 minutes (120 seconds)
+let time = 120;
+
+function countdown() {
+     
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    // if the seconds are less than 10, add the leading 0
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+
+    //set the counter to appear on the screen
+    document.getElementById("timer").innerHTML = `${minutes}: ${seconds}`;
+    time--
+   
+}
+ 
+
+// var runQuiz = function (event) {
+document.getElementById("startBtn").onclick = function runQuiz() {
+    //on button click
+
+    // call the countdown function every second
+    setInterval(countdown, 1000);   
+    
+      // display the questions
+    for (i = 0; i < questions.length; i++) {
+    
+        document.getElementById("question").innerHTML = questions[i].Q;
+        document.getElementById("A1").innerHTML = questions[i].a1;
+        document.getElementById("A2").innerHTML = questions[i].a2;
+        document.getElementById("A3").innerHTML = questions[i].a3;
+        document.getElementById("A4").innerHTML = questions[i].a4;
+       
+        //figure out what button they pushed 
+        //check it against the answer
+        //and update the time accordingly
+    }
+// }else {
+    //you ran out of time
+    // document.getElementById("question").innerHTML = "You Ran Out of Time!";
+    // document.getElementById("A1").innerHTML = '';
+    // document.getElementById("A2").innerHTML = "";
+    // document.getElementById("A3").innerHTML = "";
+    // document.getElementById("A4").innerHTML = "";
+}
+
+

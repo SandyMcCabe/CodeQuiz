@@ -18,20 +18,57 @@ body h1{
     font-size: 3.5rem;
 }
 
-  header {
-    background: var(--primary);
-    text-align: center;
-    padding: 30px 25px;
-    border-bottom: 5px solid var(--secondary);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-  }
+header {
+  background: var(--primary);
+  text-align: center;
+  padding: 30px 25px;
+  border-bottom: 5px solid var(--secondary);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 header h1{
-    font-size: 5rem;
+    font-size: 5rem;  
 }
+
 header p {
     color: var(--grey);
     margin: 5px 0 20px;
     font-size: 2rem;
   }
 
+header button {
+    outline: none;
+    border: none;
+    display: inline-block;
+    padding: 10px 15px;
+    /* background: var(--primary); */
+    color: var(--secondary);
+    font-size: 2.2rem;
+    border-radius: 12px;
+    position: relative;
+    top: -3px;
+    box-shadow: 0 3px var(--grey);
+    margin: 5px;
+}
+
+
+  .btn {
+    outline: none;
+    border: none;
+    display: inline-block;
+    padding: 10px 15px;
+    background: var(--primary);
+    color: var(--grey);
+    font-size: 2.2rem;
+    border-radius: 12px;
+    position: relative;
+    top: -3px;
+    box-shadow: 0 3px var(--grey);
+    margin: 5px;
+  }
+
+  .timer {
+    color:black
+    margin: 5px 0 20px;
+    font-size: 2rem;
+  }
