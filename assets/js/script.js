@@ -39,7 +39,7 @@ const questArr = [
         a4: "4. parenthesis",
         answer: "A3"
     },
-]
+];
 
 //initials, score
 let highScoresArr;
@@ -47,11 +47,10 @@ let highScoresArr;
 let gameActive = "";
 
 // simple counter for the game questArr
-let questCount= 0;
+let questCount = 0;
 
 //set the time for 2 minutes (120 seconds)
 let time = 120;
-
 
 function countdown() {
     const minutes = Math.floor(time / 60);
@@ -70,78 +69,75 @@ function countdown() {
         hideButtons();
     }
     return;
-}
+};
+
+var runQuiz = function () {
+    //populate the question and answers from the array
+    if (questCount < questArr.length) {
+        document.getElementById("question").innerHTML = questArr[questCount].Q;
+        document.getElementById("A1").innerHTML = questArr[questCount].a1;
+        document.getElementById("A2").innerHTML = questArr[questCount].a2;
+        document.getElementById("A3").innerHTML = questArr[questCount].a3;
+        document.getElementById("A4").innerHTML = questArr[questCount].a4;
+    };
+};
 
 function ansClick(btnID) {
-
     //deduct points if they clicked the wrong answer
     if (btnID != questArr[questCount].answer) {
         document.getElementById("correct").innerHTML = "Incorrect"
         time = time - 10;
-                // console.log(time);
-    }else {
-        document.getElementById("correct").innerHTML = "Correct" 
-    }
+    } else {
+        document.getElementById("correct").innerHTML = "Correct"
+    };
 
     //advance to the next question
     questCount++;
 
     //call the function to display the next question
-    if (questCount< questArr.length) {
+    if (questCount < questArr.length) {
         runQuiz();
     } else {
         // or, set the status to ended, stop the clock
-        //and call the function to deal with the score part
+        //and call the function to deal with the score 
         gameActive = false;
         clearInterval(countdown);
         score = time;
         endGame();
     }
-}
+};
 
 var endGame = function () {
-    
     let score = time;
-    console.log(score);
 
     document.getElementById("question").innerHTML = "Great Job!  Your final score is " + score;
     hideButtons();
 
     // get the previous high scores
     highScoresArr = JSON.parse(localStorage.getItem("Scores"));
-        console.log(highScoresArr);
-    
-        // if it's emptly, initiaze it
-        if (!highScoresArr) {
-          highScoresArr = [];
-        };
 
-        
+    // if it's emptly, initiaze it
+    if (!highScoresArr) {
+        highScoresArr = [];
+    };
+
     //if we don't have 5 top scores, add to the list    
-    if(highScoresArr.length < 5) {
+    if (highScoresArr.length < 5) {
         let initials = window.prompt("You have made it to the Leaderboard.  Please enter your initials (up to 3 digits");
         addScore(initials, score);
-    }else if(score >= highScoresArr[4].score) {
+    } else if (score >= highScoresArr[4].score) {
         //else, compare new score to previous #5
         let initials = window.prompt("You have made it to the Leaderboard.  Please enter your initials (up to 3 digits");
         addScore(initials, score);
     };
 
-}
+};
 
 let addScore = function (newInitials, newScore) {
-
-    console.log("before");
-    console.log(highScoresArr);
-
-
     //remove the last thing from the array
-    if(highScoresArr.length >= 5) {
+    if (highScoresArr.length >= 5) {
         highScoresArr.pop();
     };
-
-    console.log("trim");
-    console.log(highScoresArr)
 
     let newHigh = {
         "score": newScore,
@@ -151,34 +147,15 @@ let addScore = function (newInitials, newScore) {
     //add the new initials and score to the array
     highScoresArr.push(newHigh);
 
-    console.log("added");
-    console.log(highScoresArr)
-
     //sort the array
-    //sort the array
-    //sort the array
-    //sort the array
-    //sort the array
-   
+    highScoresArr.sort(function (a, b) {
+        return b.score - a.score;
+    });
 
     //push to local storage
     localStorage.setItem("Scores", JSON.stringify(highScoresArr));
 
-}
-
-
-
-var runQuiz = function () {
-
-    //populate the questArr and answers from the array
-    if (questCount< questArr.length) {
-        document.getElementById("question").innerHTML = questArr[questCount].Q;
-        document.getElementById("A1").innerHTML = questArr[questCount].a1;
-        document.getElementById("A2").innerHTML = questArr[questCount].a2;
-        document.getElementById("A3").innerHTML = questArr[questCount].a3;
-        document.getElementById("A4").innerHTML = questArr[questCount].a4;
-    }
-}
+};
 
 //hide the buttons to prevent erroneous clicks
 let hideButtons = function () {
@@ -188,16 +165,17 @@ let hideButtons = function () {
     document.getElementById("A4").style.visibility = 'hidden';
     document.getElementById("timer").style.visibility = 'hidden';
     document.getElementById("correct").style.visibility = 'hidden';
-}
+};
+
 
 
 document.getElementById("startBtn").onclick = function Start() {
     //on button click
     //start at the first question
-    questCount= 0;
+    questCount = 0;
 
-        // activate the quiz
-        gameActive = true;
+    // activate the quiz
+    gameActive = true;
 
     // set the timer for 2 minutes, and refresh every second
     time = 120;
@@ -212,7 +190,10 @@ document.getElementById("startBtn").onclick = function Start() {
     document.getElementById("correct").style.visibility = 'visible';
 
     //  then display the questArr
-    runQuiz()
+    runQuiz();
 };
 
 hideButtons();
+
+
+
