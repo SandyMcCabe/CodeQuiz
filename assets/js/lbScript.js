@@ -5,7 +5,7 @@ let load = function() {
     scoresArr = JSON.parse(localStorage.getItem("Scores"));
    
     // if it's empty,
-    if (scoresArr.length === 0) {
+    if (!scoresArr) {
         const heading = "There are no high scores"
                 document.getElementById(1).innerHTML = heading;   
     }else {
