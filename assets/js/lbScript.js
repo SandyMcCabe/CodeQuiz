@@ -21,10 +21,10 @@ let load = function() {
     }
 };
 
-document.getElementById("clearBtn").onclick = function Start() {
-    scoresArr = [];
-    localStorage.setItem("Scores", JSON.stringify(scoresArr));
-    load();
-}
+// document.getElementById("clearBtn").onclick = function Start() {
+//     scoresArr = [];
+//     localStorage.setItem("Scores", JSON.stringify(scoresArr));
+//     load();
+// }
 
 load();
